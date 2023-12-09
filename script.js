@@ -3,7 +3,11 @@
 dayjs.extend(window.dayjs_plugin_advancedFormat);
 
 today = $('#currentDay');
+plannerText =$('.textarea');
 today.text(dayjs().format('dddd, MMMM Do'));
+save = $('.saveBtn');
+planner = $('#container')
+let txt;
 
 // to do
 
@@ -11,7 +15,7 @@ today.text(dayjs().format('dddd, MMMM Do'));
 
 const nowHour = dayjs().format('HH');
 
-$('.textarea').each(function() {
+$(plannerText).each(function() {
     const textarea = $(this);
     
     const plannerHour = textarea.attr('data-hour');
@@ -27,3 +31,14 @@ $('.textarea').each(function() {
 
 //save button commits text-area text to local storage
 
+$(planner).on('click', '.saveBtn', function(event) {
+    event.preventDefault();
+
+    let row = $(this).parent();
+    textbox = row.children('.textarea');
+    hour = textbox.attr('data-hour');
+    plannerInput = textbox.val();
+    localStorage.setItem(hour, plannerInput);
+    savedText = localStorage.getItem('content');
+    textbox.attr('value', savedText);
+})
