@@ -1,17 +1,16 @@
-// text area for planner middle
-// save button adds to local Storage
 dayjs.extend(window.dayjs_plugin_advancedFormat);
 
 today = $('#currentDay');
 plannerText =$('.textarea');
-today.text(dayjs().format('dddd, MMMM Do'));
 save = $('.saveBtn');
 planner = $('#container')
 validBox = $('#validBox')
 
-// to do
+// Day tracker
 
-// add color code functionality to text-area
+today.text(dayjs().format('dddd, MMMM Do'));
+
+// add color code & local storage functionality to text-area
 
 const nowHour = dayjs().format('HH');
 
