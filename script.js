@@ -7,7 +7,7 @@ plannerText =$('.textarea');
 today.text(dayjs().format('dddd, MMMM Do'));
 save = $('.saveBtn');
 planner = $('#container')
-let txt;
+validBox = $('#validBox')
 
 // to do
 
@@ -39,6 +39,16 @@ $(planner).on('click', '.saveBtn', function(event) {
     hour = textbox.attr('data-hour');
     plannerInput = textbox.val();
     localStorage.setItem(hour, plannerInput);
-    savedText = localStorage.getItem('content');
-    textbox.attr('value', savedText);
+
+    showValidation();
 })
+
+// validation message
+
+function showValidation() {
+    validBox.text('Your entry has been saved!');
+    setTimeout(function() {
+        clearInterval;
+        validBox.text('')
+    }, 3000)
+}
