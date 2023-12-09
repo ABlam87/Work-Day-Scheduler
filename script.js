@@ -19,6 +19,7 @@ $(plannerText).each(function() {
     const textarea = $(this);
     
     const plannerHour = textarea.attr('data-hour');
+    textarea.text(localStorage.getItem(plannerHour));
     
     if (nowHour < plannerHour) {
         textarea.addClass('future');
